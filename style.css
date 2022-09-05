@@ -1,0 +1,88 @@
+html {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    height: 100%;
+}
+
+.nav {
+    /* 背景色設定 */
+    background-color: #666;
+}
+
+.nav ul {
+    /* 表示幅を90%に */
+    width: 90%;
+    /* フレックスボックス化 */
+    display: flex;
+    /* 先頭のポチをなくす */
+    list-style: none;
+    /* 余白の自動調整 （上下の余白は0、左右は自動調整）*/
+    margin: 0 auto;
+    /* 高さを50pxに指定 */
+    height: 50px;
+}
+
+.nav a {
+    /* アンダーライン削除 */
+    text-decoration: none;
+    /* 文字色設定 */
+    color: #fff;
+    /* 内側余白を上右下左の順で設定 */
+    padding: 10px 20px 10px 0px;
+    /*ブロックにする */
+    display: block;
+    /* 文字を大き目に設定 */
+    font-size: large;
+}
+
+.nav a:hover {
+    /* マウスオーバーした時の文字色を設定 */
+    color: #aaa;
+}
+
+/* トップ */
+.top {
+    /* 背景にunsplash.comから取得した画像を設定 */
+    background-image: url("https://source.unsplash.com/random");
+    /* 画像をいっぱいに表示 */
+    background-size: cover;
+    /* 表示する高さを画面の40％に */
+    height: 40vh;
+    /* 表示幅を画面の90%に */
+    width: 100%;
+    /* フレックスボックスを指定*/
+    display: flex;
+    /* フレックスアイテムを使って両端から中央に配置*/
+    justify-content: center;
+    /* フレックスアイテムを使って上下から中央に配置 */
+    align-items: center;
+    /* テキストの配置を中央揃えに */
+    text-align: center;
+}
+
+.top_msg {
+    /* 文字色を白に */
+    color: #fff;
+}
+
+.content {
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.footer {
+    background-color: #666;
+    height: 60px;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: sticky;
+    top: 100vh;
+}
