@@ -11,6 +11,8 @@ const body_error = document.getElementById("body_error");
 const email_exp = /^[a-z0-9.]+@[a-z0-9.]+\.[a-z]+$/;
 const body_exp = /^.{1,10}$/;
 
+const api_url = "https://script.google.com/macros/s/{デプロイID}/exec";
+
 submit_btn.addEventListener("click", (e) => {
     e.preventDefault();
 
@@ -23,11 +25,25 @@ submit_btn.addEventListener("click", (e) => {
     }
 
     if (!body_exp.test(body.value)) {
-        body_error.classList.remove("hidden");
+        body_error.classList.remove("hidden")
     }
 
     if (name_error.classList.contains("hidden") && email_error.classList.contains("hidden") && body_error.classList.contains("hidden")) {
-        alert(`お名前：${contact_name.value}\nemail：${email.value}\nお問い合わせ内容：${body.value}`);
+        fetch(api_url, {
+            method: "post",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+            body: encodeURI(`name=${contact_name.value}&email=${email.value}&body=${body.value}&channel=web`)
+        })
+            .then((response) => {
+                response.json().then((json) => {
+                    alert(json.message);
+                });
+            })
+            .catch((error) => {
+                alert(error.message);
+            });
     }
 
 });
@@ -46,7 +62,7 @@ email.addEventListener("keyup", (e) => {
     } else {
         email_error.classList.add("hidden");
     }
-});
+})
 
 body.addEventListener("keyup", (e) => {
     if (!body_exp.test(body.value)) {
@@ -54,4 +70,4 @@ body.addEventListener("keyup", (e) => {
     } else {
         body_error.classList.add("hidden");
     }
-});
+})
